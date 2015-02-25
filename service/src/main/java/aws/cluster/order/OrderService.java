@@ -18,7 +18,7 @@ public class OrderService {
         this.orderRepository = orderRepository;
     }
 
-//    @Transactional(readOnly = true)
+    @Transactional(readOnly = true)
     public List<OrderEntity> getOrdersByUserId(Integer customerId) {
         logger.info("serving orders for customer {}", customerId);
         return orderRepository.getOrdersByUserId(customerId);

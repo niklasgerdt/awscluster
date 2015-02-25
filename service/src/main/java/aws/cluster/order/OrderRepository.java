@@ -1,7 +1,6 @@
 package aws.cluster.order;
 
 import java.util.List;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,11 +21,8 @@ public class OrderRepository {
 
     public List<OrderEntity> getOrdersByUserId(final int userId) {
         logger.info("fetching orders for user {}", userId);
-        Session session = sessionFactory.getCurrentSession();
-        session.beginTransaction();
         @SuppressWarnings("unchecked")
         List<OrderEntity> orders = sessionFactory.getCurrentSession().createQuery("from OrderEntity where userid = :userid").setParameter("userid", userId).list();
-        session.getTransaction().commit();
         logger.info("fetched orders {} for user {}", orders, userId);
         return orders;
     }

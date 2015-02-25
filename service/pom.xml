@@ -8,8 +8,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
-		<springframework.version>4.0.6.RELEASE</springframework.version>
-		<hibernate.version>4.3.8.Final</hibernate.version>
+		<springframework.version>4.0.3.RELEASE</springframework.version>
+		<hibernate.version>4.3.5.Final</hibernate.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 <!-- 		<jetty.port>9080</jetty.port> -->

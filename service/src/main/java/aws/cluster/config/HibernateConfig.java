@@ -42,7 +42,6 @@ public class HibernateConfig {
     private Properties getHibernateProperties() {
         Properties props = new Properties();
         props.put("hibernate.dialect", hibernateDialect);
-        props.put("hibernate.current_session_context_class", hibernateCurrentSessionContextClass);
         props.put("hibernate.show_sql", hibernateShowSql);
         props.put("hibernate.default_schema", hibernateDefaultSchema);
         return props;
