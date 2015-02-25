@@ -10,7 +10,7 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 @Configuration
-@PropertySource("classpath:/jdbc.properties")
+@PropertySource("classpath:/data.properties")
 public class DatasourceConfig {
     private final static Logger logger = LoggerFactory.getLogger(DatasourceConfig.class);
     @Value("${jdbc.driver}")

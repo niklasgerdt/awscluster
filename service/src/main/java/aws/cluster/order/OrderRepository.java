@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import javax.sql.DataSource;
+import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,16 +12,19 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
+import aws.cluster.order.entity.OrderEntity;
 
 @Repository
 public class OrderRepository {
     private final static Logger logger = LoggerFactory.getLogger(OrderRepository.class);
     private final NamedParameterJdbcTemplate jdbc;
+    private final SessionFactory sessionFactory;
 
     @Autowired
-    public OrderRepository(final DataSource dataSource) {
+    public OrderRepository(final DataSource dataSource, final SessionFactory sessionFactory) {
         logger.info("created OrderRepository");
-        jdbc = new NamedParameterJdbcTemplate(dataSource);
+        this.jdbc = new NamedParameterJdbcTemplate(dataSource);
+        this.sessionFactory = sessionFactory;
     }
 
     public List<OrderEntity> getOrdersByUserId(final int userId) {
