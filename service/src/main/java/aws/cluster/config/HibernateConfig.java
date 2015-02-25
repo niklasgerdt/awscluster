@@ -10,6 +10,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
+import aws.cluster.order.entity.CustomerEntity;
+import aws.cluster.order.entity.OrderEntity;
 
 @Configuration
 @PropertySource("classpath:/data.properties")
@@ -23,18 +25,26 @@ public class HibernateConfig {
     private String hibernateCurrentSessionContextClass;
     @Value("${hibernate.show_sql}")
     private String hibernateShowSql;
+    @Value("${hibernate.default_schema}")
+    private String hibernateDefaultSchema;
 
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
         logger.info("configuring hibernate session factory");
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(datasource);
-        sessionFactory.setAnnotatedPackages("aws.cluster.order.entity");
+        sessionFactory.setAnnotatedClasses(OrderEntity.class, CustomerEntity.class);
+        sessionFactory.setHibernateProperties(getHibernateProperties());
+        logger.info("configured hibernate session factory");
+        return sessionFactory;
+    }
+
+    private Properties getHibernateProperties() {
         Properties props = new Properties();
         props.put("hibernate.dialect", hibernateDialect);
         props.put("hibernate.current_session_context_class", hibernateCurrentSessionContextClass);
         props.put("hibernate.show_sql", hibernateShowSql);
-        logger.info("configured hibernate session factory");
-        return sessionFactory;
+        props.put("hibernate.default_schema", hibernateDefaultSchema);
+        return props;
     }
 }
