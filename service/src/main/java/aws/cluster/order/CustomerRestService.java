@@ -53,19 +53,19 @@ public class CustomerRestService {
     }
 
     @RequestMapping(value = "/{customerId}", method = RequestMethod.PUT, consumes = "application/json", produces = "application/json")
-    public String updateCustomer(@PathVariable Integer customerId, @RequestBody CustomerData data,
+    public CustomerData updateCustomer(@PathVariable Integer customerId, @RequestBody CustomerData data,
             @RequestHeader("Host") String host) {
         logger.info("updating customer {} ({})", customerId, data.getName());
         Customer user = customerService.updateUser(customerId, data.getName());
-        
-
-        return customerService.updateUser();
+        CustomerData ret = new CustomerData(user.getName(), buildLink(host, user));
+        return ret;
     }
 
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public String handleMyException(Exception exception) {
-        return exception.getMessage();
+        logger.error(exception.getMessage());
+        return "INTERNAL ERROR";
     }
 
     private String buildLink(String host, Customer c) {

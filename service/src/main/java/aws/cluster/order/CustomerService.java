@@ -37,8 +37,8 @@ public class CustomerService {
     }
 
     @Transactional()
-    public String updateUser(Integer customerId, String name) {
-        
-        return null;
+    public Customer updateUser(Integer customerId, String name) {
+        logger.info("updating user {} ({})", customerId, name);
+        return customerRepository.updateUser(customerId, name);
     }
 }

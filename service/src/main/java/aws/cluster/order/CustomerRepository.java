@@ -38,4 +38,12 @@ public class CustomerRepository {
         Session s = sessionFactory.getCurrentSession();
         return (Customer) s.get(Customer.class, customerId);
     }
+
+    public Customer updateUser(Integer customerId, String name) {
+        Session s = sessionFactory.getCurrentSession();
+        Customer c = (Customer) s.get(Customer.class, customerId);
+        c.setName(name);
+        s.save(c);
+        return c;
+    }
 }

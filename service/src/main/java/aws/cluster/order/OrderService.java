@@ -24,4 +24,21 @@ public class OrderService {
         return orderRepository.getOrdersByUserId(customerId);
     }
 
+    @Transactional(readOnly = true)
+    public Order getOrder(Integer customerId, Integer orderId) {
+        logger.info("serving order {} for customer {}", orderId, customerId);
+        return orderRepository.getOrder(customerId, orderId);
+    }
+
+    @Transactional(readOnly = false)
+    public Order newOrder(Integer customerId, String description) {
+        logger.info("creating new order {} for customer {}", description, customerId);
+        return orderRepository.newOrder(customerId, description);
+    }
+
+    @Transactional(readOnly = false)
+    public Order updateOrder(Integer customerId, Integer orderId, String description) {
+        logger.info("updating order {} for customer {}", orderId, customerId);
+        return orderRepository.updateOrder(orderId, customerId, description);
+    }
 }
