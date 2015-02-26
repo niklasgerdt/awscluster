@@ -4,15 +4,21 @@
 install mysql (debian/ubuntu)
 -----------------------------
 apt-get install mysql-server mysql-client mysql-workbench
+
 mysqladmin -u root password 'XXX'
 
 mysql -u root -p
+
 grant all privileges on *.* to 'DBADMIN'@'localhost' identified by 'ZZZ' with grant option;
+
 grant all privileges on *.* to 'DBADMIN'@'%' identified by 'ZZZ' with grant option;
+
 flush privileges;
+
 exit;
 
 mysql -u DBADMIN -p
+
 CREATE DATABASE `APP` /*!40100 DEFAULT CHARACTER SET latin1 */$$
 
 CREATE TABLE `user` (
