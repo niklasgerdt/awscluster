@@ -14,14 +14,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "order")
-public class OrderEntity {
+@Table(name = "user")
+public class Customer {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "userid")
-    private int customerId;
-    @Column(name = "description", length = 45)
-    private String description;
+    @Column(name = "name", length = 45)
+    private String name;
 }

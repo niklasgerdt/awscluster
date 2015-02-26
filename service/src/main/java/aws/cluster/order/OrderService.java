@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import aws.cluster.order.entity.OrderEntity;
+import aws.cluster.order.entity.Order;
 
 @Service
 public class OrderService {
@@ -19,7 +19,7 @@ public class OrderService {
     }
 
     @Transactional(readOnly = true)
-    public List<OrderEntity> getOrdersByUserId(Integer customerId) {
+    public List<Order> getOrdersByUserId(Integer customerId) {
         logger.info("serving orders for customer {}", customerId);
         return orderRepository.getOrdersByUserId(customerId);
     }

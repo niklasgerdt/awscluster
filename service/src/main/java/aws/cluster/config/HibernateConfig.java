@@ -10,8 +10,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
-import aws.cluster.order.entity.CustomerEntity;
-import aws.cluster.order.entity.OrderEntity;
+import aws.cluster.order.entity.Customer;
+import aws.cluster.order.entity.Order;
 
 @Configuration
 @PropertySource("classpath:/data.properties")
@@ -33,7 +33,7 @@ public class HibernateConfig {
         logger.info("configuring hibernate session factory");
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(datasource);
-        sessionFactory.setAnnotatedClasses(OrderEntity.class, CustomerEntity.class);
+        sessionFactory.setAnnotatedClasses(Order.class, Customer.class);
         sessionFactory.setHibernateProperties(getHibernateProperties());
         logger.info("configured hibernate session factory");
         return sessionFactory;

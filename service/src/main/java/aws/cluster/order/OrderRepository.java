@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import aws.cluster.order.entity.OrderEntity;
+import aws.cluster.order.entity.Order;
 
 @Repository
 public class OrderRepository {
@@ -19,10 +19,10 @@ public class OrderRepository {
         this.sessionFactory = sessionFactory;
     }
 
-    public List<OrderEntity> getOrdersByUserId(final int userId) {
+    public List<Order> getOrdersByUserId(final int userId) {
         logger.info("fetching orders for user {}", userId);
         @SuppressWarnings("unchecked")
-        List<OrderEntity> orders = sessionFactory.getCurrentSession().createQuery("from OrderEntity where userid = :userid").setParameter("userid", userId).list();
+        List<Order> orders = sessionFactory.getCurrentSession().createQuery("from Order where userid = :userid").setParameter("userid", userId).list();
         logger.info("fetched orders {} for user {}", orders, userId);
         return orders;
     }

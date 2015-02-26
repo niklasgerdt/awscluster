@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import aws.cluster.order.entity.OrderEntity;
+import aws.cluster.order.entity.Order;
 
 @RestController
 @RequestMapping("/orders")
@@ -22,15 +22,15 @@ public class OrderRestService {
     }
 
     @RequestMapping(value = "/{customerId}", method = RequestMethod.GET)
-    public List<OrderEntity> getOrders(@PathVariable Integer customerId) {
+    public List<Order> getOrders(@PathVariable Integer customerId) {
         logger.info("fetching orders for customer {}", customerId);
         return orderService.getOrdersByUserId(customerId);
     }
 
     @RequestMapping(value = "/{customerId}/{orderId}", method = RequestMethod.GET)
-    public OrderEntity getOrder(@PathVariable Integer customerId, @PathVariable Integer orderId) {
+    public Order getOrder(@PathVariable Integer customerId, @PathVariable Integer orderId) {
         logger.info("fetching order {} for customer {}", orderId, customerId);
-        OrderEntity order = new OrderEntity(orderId, customerId, "desc.");
+        Order order = new Order(orderId, customerId, "desc.");
         return order;
     }
 
