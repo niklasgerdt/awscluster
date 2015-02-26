@@ -34,10 +34,17 @@ CREATE TABLE `order` (
 Rest interfaces
 ---------------
 INFO: Mapped "{[/orders/{customerId}],methods=[GET],params=[],headers=[],consumes=[],produces=[application/json],custom=[]}"
-INFO: Mapped "{[/orders/{customerId}],methods=[POST],params=[],headers=[],consumes=[application/json],produces=[application/json],custom=[]}" 
-INFO: Mapped "{[/orders/{customerId}/{orderId}],methods=[PUT],params=[],headers=[],consumes=[application/json],produces=[application/json],custom=[]}" 
-INFO: Mapped "{[/orders/{customerId}/{orderId}],methods=[GET],params=[],headers=[],consumes=[],produces=[application/json],custom=[]}" 
+
+INFO: Mapped "{[/orders/{customerId}],methods=[POST],params=[],headers=[],consumes=[application/json],produces=[application/json],custom=[]}"
+
+INFO: Mapped "{[/orders/{customerId}/{orderId}],methods=[PUT],params=[],headers=[],consumes=[application/json],produces=[application/json],custom=[]}"
+
+INFO: Mapped "{[/orders/{customerId}/{orderId}],methods=[GET],params=[],headers=[],consumes=[],produces=[application/json],custom=[]}"
+
 INFO: Mapped "{[/customers/],methods=[GET],params=[],headers=[],consumes=[],produces=[application/json],custom=[]}"
+
 INFO: Mapped "{[/customers/{customerId}],methods=[GET],params=[],headers=[],consumes=[],produces=[application/json],custom=[]}" 
-INFO: Mapped "{[/customers/],methods=[POST],params=[],headers=[],consumes=[application/json],produces=[application/json],custom=[]}" 
+
+INFO: Mapped "{[/customers/],methods=[POST],params=[],headers=[],consumes=[application/json],produces=[application/json],custom=[]}"
+
 INFO: Mapped "{[/customers/{customerId}],methods=[PUT],params=[],headers=[],consumes=[application/json],produces=[application/json],custom=[]}"
