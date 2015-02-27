@@ -4,7 +4,10 @@
   <groupId>awscluster</groupId>
   <artifactId>service</artifactId>
   <packaging>war</packaging>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.2-SNAPSHOT</version>
+  <scm>
+    <connection>scm:git:https://github.com/rabbeb/awscluster.git</connection>
+  </scm>
   <build>
     <plugins>
       <plugin>
@@ -43,6 +46,18 @@
           <scanIntervalSeconds>1</scanIntervalSeconds>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>versions-maven-plugin</artifactId>
+        <version>2.1</version>
+      </plugin>
+      <plugin>
+        <artifactId>maven-scm-plugin</artifactId>
+        <version>1.8.1</version>
+        <configuration>
+          <tag>${project.artifactId}-${project.version}</tag>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
   <dependencies>
@@ -71,6 +86,12 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  <distributionManagement>
+    <repository>
+      <id>awscluster</id>
+      <url>https://github.com/rabbeb/awscluster.git</url>
+    </repository>
+  </distributionManagement>
   <properties>
     <hibernate.version>4.3.5.Final</hibernate.version>
     <springframework.version>4.0.3.RELEASE</springframework.version>
