@@ -21,7 +21,7 @@
 
 	<distributionManagement>
 		<repository>
-			<id>awscluster</id>
+			<id>service</id>
 			<url>https://github.com/rabbeb/awscluster.git</url>
 		</repository>
 	</distributionManagement>
