@@ -22,7 +22,8 @@
 	<distributionManagement>
 		<repository>
 			<id>service</id>
-			<url>https://github.com/rabbeb/awscluster.git</url>
+			<url>https://github.com/rabbeb/awscluster/service</url>
+			<uniqueVersion>false</uniqueVersion>
 		</repository>
 	</distributionManagement>
 
