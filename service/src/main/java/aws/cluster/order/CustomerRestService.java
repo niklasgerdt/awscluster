@@ -69,6 +69,6 @@ public class CustomerRestService {
     }
 
     private String buildLink(String host, Customer c) {
-        return host + "/customers/" + c.getId();
+        return host + "/service/customers/" + c.getId();
     }
 }
